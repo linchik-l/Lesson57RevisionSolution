@@ -13,5 +13,13 @@
 #include "logic.h"
 
 bool is_digits_count_odd(long long number) {
-	return false;
+	if (number < 0) {
+		number = -number;
+	}
+	if (number < 10) {
+		return true;
+	}
+	int t = (number % 10) < 10 ? 1 : 0;
+
+	return (is_digits_count_odd(number / 10) + t) % 2 == 1 ? true : false;
 }
